@@ -1,0 +1,58 @@
+{
+	"name": "10GetURLAndTriggerNGPFPToBlob",
+	"properties": {
+		"description": "job to get all urls from sql table",
+		"activities": [
+			{
+				"name": "LookupURLs",
+				"type": "Lookup",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT SOURCE_KEY,API_CALL,SERIES_ID FROM dbo.NGPFP\n"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTableNGPFP",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "LookupURLs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "20NGPFPToBlob",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"urlList": {
+							"value": "@activity('LookupURLs').output.value",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "EIAPipelines"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

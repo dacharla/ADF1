@@ -1,0 +1,22 @@
+{
+	"name": "AzureSqlDWDataset_New",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToSyncAzureDataWarehouse",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DWTableName": {
+				"type": "String"
+			}
+		},
+		"type": "AzureSqlDWTable",
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().DWTableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

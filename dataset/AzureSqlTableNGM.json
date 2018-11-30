@@ -1,0 +1,24 @@
+{
+	"name": "AzureSqlTableNGM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBulkDB",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "Data",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[NGM]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

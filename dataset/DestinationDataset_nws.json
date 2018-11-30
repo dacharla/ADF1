@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_nws",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "emp",
+			"folderPath": "azuresamplescontainer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

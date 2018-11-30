@@ -1,0 +1,14 @@
+{
+	"name": "SourceDataset_nws",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesDBServer",
+			"type": "LinkedServiceReference"
+		},
+		"type": "SqlServerTable",
+		"typeProperties": {
+			"tableName": "[dbo].[emp]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

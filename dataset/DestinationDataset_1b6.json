@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_1b6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesDBServer",
+			"type": "LinkedServiceReference"
+		},
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[emp]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

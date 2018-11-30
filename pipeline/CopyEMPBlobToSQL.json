@@ -1,0 +1,60 @@
+{
+	"name": "CopyEMPBlobToSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_1b6",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "azuresamplescontainer/inputEMP.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[emp]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Prop_0": "first_name",
+							"Prop_1": "last_name"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "NGPFPJsons",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_1b6",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

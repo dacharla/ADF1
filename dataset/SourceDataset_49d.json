@@ -1,0 +1,37 @@
+{
+	"name": "SourceDataset_49d",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "HttpFile",
+		"structure": [
+			{
+				"name": "series",
+				"type": "String"
+			},
+			{
+				"name": "request.command",
+				"type": "String"
+			},
+			{
+				"name": "request.series_id",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonPathDefinition": {
+					"series": "$.['series']",
+					"request.command": "$.['request']['command']",
+					"request.series_id": "$.['request']['series_id']"
+				}
+			},
+			"requestMethod": "Get"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

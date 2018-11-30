@@ -1,0 +1,16 @@
+{
+	"name": "LinkToEIAHTTPServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "http://api.eia.gov/series/",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "IRForEIA",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

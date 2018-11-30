@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_dek",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "emp_local",
+			"folderPath": "azuresamplescontainer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

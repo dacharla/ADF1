@@ -1,0 +1,38 @@
+{
+	"name": "SourceJSONDatasets",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Series_Type": {
+				"type": "String"
+			}
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "series",
+				"type": "String"
+			},
+			{
+				"name": "request.series_id",
+				"type": "String"
+			},
+			{
+				"name": "Series_Type",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
+			},
+			"fileName": "PET.M_EPL2_FPF_NUS_MBBL.M",
+			"folderPath": "azuresamplescontainer/eia_rest"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

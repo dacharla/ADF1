@@ -1,0 +1,28 @@
+{
+	"name": "TargetPersonTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBulkDB",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "name_type",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Person_Details]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

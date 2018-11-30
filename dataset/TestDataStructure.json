@@ -1,0 +1,33 @@
+{
+	"name": "TestDataStructure",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "first_column"
+			},
+			{
+				"name": "second_column"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"encodingName": null,
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "Ashok_Details.csv",
+			"folderPath": "azuresamplescontainer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

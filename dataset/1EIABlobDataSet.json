@@ -1,0 +1,56 @@
+{
+	"name": "1EIABlobDataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folder": {
+				"type": "String"
+			},
+			"file": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "EIA1"
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "series",
+				"type": "String"
+			},
+			{
+				"name": "request.series_id",
+				"type": "String"
+			},
+			{
+				"name": "source_key",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonPathDefinition": {
+					"series": "$.['series']",
+					"request.command": "$.['request']['command']",
+					"request.series_id": "$.['request']['series_id']",
+					"Source_key": "@item().SOURCE_KEY"
+				}
+			},
+			"fileName": {
+				"value": "@dataset().file",
+				"type": "Expression"
+			},
+			"folderPath": {
+				"value": "@dataset().folder",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,11 @@
+{
+	"name": "SqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesDBServer",
+			"type": "LinkedServiceReference"
+		},
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

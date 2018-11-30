@@ -1,0 +1,33 @@
+{
+	"name": "EIADataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToEIAHTTPServer",
+			"type": "LinkedServiceReference"
+		},
+		"type": "HttpFile",
+		"structure": [
+			{
+				"name": "series",
+				"type": "String"
+			},
+			{
+				"name": "request.command",
+				"type": "String"
+			},
+			{
+				"name": "request.series_id",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
+			},
+			"relativeUrl": "?api_key=b686e04fb4b5fe46474bc64b3118413c&series_id=NG.NGM_EPG0_FGW_NUS_MMCFD.M",
+			"requestMethod": "Get"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

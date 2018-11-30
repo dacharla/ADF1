@@ -1,0 +1,11 @@
+{
+	"name": "IRForEIA",
+	"properties": {
+		"type": "Managed",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "AutoResolve"
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "AzureSqlDatabaseBulkDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBulkDB",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "dummyName"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

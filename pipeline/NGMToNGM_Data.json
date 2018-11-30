@@ -1,0 +1,92 @@
+{
+	"name": "NGMToNGM_Data",
+	"properties": {
+		"activities": [
+			{
+				"name": "LookupNGM",
+				"type": "Lookup",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [Title]\n      ,[Data]\n\t  ,'My new series' as Series_Type\n  FROM [dbo].[NGM]"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTableNGM",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachNGMRecord",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LookupNGM",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LookupNGM').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "CalllNGMInsertProc",
+							"type": "SqlServerStoredProcedure",
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[p_insert_json]",
+								"storedProcedureParameters": {
+									"json": {
+										"value": {
+											"value": "@item().Data",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"series_id": {
+										"value": {
+											"value": "@item().Title",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"series_type": {
+										"value": {
+											"value": "@item().Series_Type",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LinkToAzureSamplesBulkDB",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,14 @@
+{
+	"name": "SourceDataset_dek",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToLocalSQL",
+			"type": "LinkedServiceReference"
+		},
+		"type": "SqlServerTable",
+		"typeProperties": {
+			"tableName": "[dbo].[emp_local]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,14 @@
+{
+	"name": "AzureSqlTableNGPFP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBulkDB",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": "dummyTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,45 @@
+{
+	"name": "NGPFPHttpFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "NGPFPHTTPServer",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"api_key": {
+				"type": "String"
+			},
+			"series_id": {
+				"type": "String"
+			}
+		},
+		"type": "HttpFile",
+		"structure": [
+			{
+				"name": "series",
+				"type": "String"
+			},
+			{
+				"name": "request.series_id",
+				"type": "String"
+			},
+			{
+				"name": "source_key",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
+			},
+			"relativeUrl": {
+				"value": "@concat('?','api_key=',dataset().api_key,'&series_id=',dataset().series_id)",
+				"type": "Expression"
+			},
+			"requestMethod": "Get",
+			"additionalHeaders": ""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

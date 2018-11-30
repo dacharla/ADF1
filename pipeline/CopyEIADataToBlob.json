@@ -1,0 +1,54 @@
+{
+	"name": "CopyEIADataToBlob",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyEachEIADataSet",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "HttpSource",
+						"httpRequestTimeout": "00:01:40"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"series": "series",
+							"request.command": "request.command",
+							"request.series_id": "request.series_id"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "EIADataSet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "EIABlobDataSet",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder": "azuresamplescontainer/eia_rest",
+							"file": "thirdfile.json"
+						}
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

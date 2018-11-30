@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_49d",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkToAzureSamplesBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects"
+			},
+			"fileName": "secondfile.json",
+			"folderPath": "azuresamplescontainer/eia_rest"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
