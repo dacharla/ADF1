@@ -1,5 +1,5 @@
 {
-	"name": "1EIABlobDataSet",
+	"name": "EIABlobDataSet_Test",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LinkToAzureSamplesBlobStorage",
