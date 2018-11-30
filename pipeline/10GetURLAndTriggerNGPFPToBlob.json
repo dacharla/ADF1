@@ -1,7 +1,7 @@
 {
 	"name": "10GetURLAndTriggerNGPFPToBlob",
 	"properties": {
-		"description": "job to get all urls from sql table",
+		"description": "job to get all urls from sql table final",
 		"activities": [
 			{
 				"name": "LookupURLs",
