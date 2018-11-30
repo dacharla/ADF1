@@ -1,6 +1,7 @@
 {
 	"name": "20NGPFPToBlob",
 	"properties": {
+		"description": "job to put blobs",
 		"activities": [
 			{
 				"name": "ForEachURL",
